@@ -1,0 +1,11 @@
+{
+  "name": "Pulse — Smart Expense Tracker",
+  "short_name": "Pulse",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#070a12",
+  "theme_color": "#080b16",
+  "description": "Private cloud-synced expense tracker with account-level data isolation.",
+  "orientation": "any"
+}

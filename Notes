@@ -1,0 +1,12 @@
+Pulse — Greeting Update
+
+Changes:
+- Greeting is based on the browser's current local time.
+- 05:00–11:59: Good morning 👋
+- 12:00–17:59: Good afternoon ☀️
+- 18:00–04:59: Good evening 🌙
+- Greeting refreshes automatically every 60 seconds while the dashboard is open.
+- Service-worker cache name was bumped to force the updated index.html to load.
+
+Deployment:
+Replace index.html, manifest.json, sw.js and README.md in the existing GitHub Pages repository. Keep the existing config.js unchanged.
