@@ -1,0 +1,18 @@
+{
+  "name": "Pulse",
+  "short_name": "Pulse",
+  "start_url": "/Pulse-2/",
+  "scope": "/Pulse-2/",
+  "display": "standalone",
+  "background_color": "#070a12",
+  "theme_color": "#080b16",
+  "description": "Pulse — private personal finance, expense, savings and wealth tracking.",
+  "icons": [
+    {
+      "src": "/Pulse-2/pulse-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

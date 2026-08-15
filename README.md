@@ -1,65 +1,30 @@
-# Pulse — Google Login Clean Build
+# Pulse v16 — React Modernization
 
-This build is prepared for the existing GitHub Pages deployment:
+Pulse has been migrated from the previous single-file HTML/vanilla-JS architecture to a React + Vite application while retaining Supabase Auth/PostgreSQL as the cloud data layer.
 
-https://prem0592.github.io/pulse-2/
+## Architecture
+- React 19 + Vite for reactive UI and componentized state
+- Supabase Auth + PostgreSQL for identity and persistent data
+- Supabase Realtime subscriptions for live expense/budget/wealth updates
+- Node.js + Express API foundation for server-side jobs/integrations
+- PWA/service-worker support for the GitHub Pages project URL
 
-## Upload these files to the GitHub repository
+## Existing data model
+The React data layer uses the existing tables: `expenses`, `categories`, `payment_methods`, `payers`, `budgets`, `pulse_goals`, `pulse_net_worth`, `pulse_recurring_plans`, and `pulse_reminders`.
 
-Replace:
+## Development
+```bash
+npm install
+# set VITE_SUPABASE_URL and VITE_SUPABASE_PUBLISHABLE_KEY in .env.local
+npm run dev
+npm run build
+```
 
-1. index.html
-2. manifest.json
-3. sw.js
-
-Keep your existing `config.js` unchanged.
-
-Do NOT upload `config.example.js` as `config.js` unless you first replace its placeholders with your actual Supabase project URL and publishable key.
-
-## Google Login
-
-The login screen now includes:
-
-**Continue with Google**
-
-The app uses Supabase Auth OAuth and redirects back to the current GitHub Pages path.
-
-## Supabase / Google setup
-
-In Supabase:
-
-Authentication → Providers → Google → enable Google.
-
-Use your Google OAuth Client ID and Client Secret there.
-
-For the Google OAuth provider, configure the Supabase callback URL shown by your Supabase project. Do not use the GitHub Pages URL as the Google provider callback unless Supabase specifically tells you to.
-
-Also make sure the GitHub Pages URL is allowed in:
-
-Authentication → URL Configuration → Redirect URLs
-
-Recommended application URL:
-
-https://prem0592.github.io/pulse-2/
+## GitHub Pages
+This repository is configured for the project site `/pulse-2/` through `vite.config.js`.
 
 ## Security
+Only the Supabase publishable key belongs in browser configuration. Never commit a Supabase secret/service-role key. Node server secrets belong in server deployment environment variables only.
 
-Keep only the Supabase publishable key in browser-side `config.js`.
-
-Never put a `sb_secret_...` or service-role key in:
-- index.html
-- config.js
-- GitHub
-- any browser-accessible file
-
-## Deployment
-
-1. Extract this ZIP.
-2. Replace `index.html`, `manifest.json`, and `sw.js` in your GitHub repository.
-3. Keep your existing `config.js`.
-4. Commit and push.
-5. Wait for GitHub Pages deployment.
-6. Open the site in a private/incognito window for the first test.
-7. Click **Continue with Google**.
-
-The service-worker cache name has been bumped so the new login page can be picked up instead of the previous cached version.
+## Migration strategy
+The old single-file implementation remains available on `main` until this modernization branch is validated and merged. This branch is the isolated upgrade path so the production build is not replaced blindly.
